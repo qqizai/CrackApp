@@ -3,7 +3,7 @@
 
 最新动态，敬请关注[我的博客](https://blog.csdn.net/weixin_41173374)
 
--[x] [【APP逆向-入门级】记一款灰产直播APP逆向过程](https://github.com/qqizai/CrackApp/tree/master/lianrenApp)
+- [x] [【APP逆向-入门级】记一款灰产直播APP逆向过程](https://github.com/qqizai/CrackApp/tree/master/lianrenApp)
 
 
 更多相关的APP逆向正在路上，你们给个 星 是我最大的动力
