@@ -1,6 +1,8 @@
 # CrackApp
 安卓逆向相关
 
+最新动态，敬请关注[我的博客](https://blog.csdn.net/weixin_41173374)
+
 -[x] [【APP逆向-入门级】记一款灰产直播APP逆向过程](https://github.com/qqizai/CrackApp/tree/master/lianrenApp)
 
 
