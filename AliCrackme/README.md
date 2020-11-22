@@ -6,6 +6,7 @@
 
 ### 本文将介绍两种方法：frida hook关键函数、so动态调试
 
+文末有参考文献
 
 #### 一、frida hook关键函数
 
@@ -153,5 +154,11 @@ if __name__ == "__main__":
 提取码: sas5 复制这段内容后打开百度网盘手机App，操作更方便哦
 ```
 
+参考资料：
+- [Frida 官方文档](https://frida.re/docs/home/)
+- [FRIDA-API使用篇——肉丝](https://www.anquanke.com/post/id/195869)
+- [r0ysue Github](https://github.com/r0ysue/AndroidSecurityStudy)
+- [r0ysue 看雪](https://bbs.pediy.com/user-home-581423.htm)
 
+r0ysue肉丝是我目前见过最牛逼的逆向真男人
 
