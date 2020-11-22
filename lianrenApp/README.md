@@ -1,4 +1,8 @@
 
+先知：图片弱看不了，请点击我去国内的码云查看：[https://gitee.com/qqizai/CrackApp](https://gitee.com/qqizai/CrackApp)
+
+想要了解最新动态，敬请关注[我的博客](https://blog.csdn.net/weixin_41173374)
+
 更详细的内容，请看原文章来源：
 [原文1](https://bbs.nightteam.cn/thread-428.htm#6219)
 [原文2](https://qqizai.github.io/2020/05/04/app-lianren/)

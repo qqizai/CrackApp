@@ -1,7 +1,9 @@
 # CrackApp
 ### 安卓逆向/破解APP限制
+先知：图片弱看不了，请点击我去国内的码云查看：[https://gitee.com/qqizai/CrackApp](https://gitee.com/qqizai/CrackApp)
 
 想要了解最新动态，敬请关注[我的博客](https://blog.csdn.net/weixin_41173374)
+
 
 目前已逆向的APP列表：
 - [x] [【APP逆向-入门级】记一款灰产直播APP逆向过程](https://github.com/qqizai/CrackApp/tree/master/lianrenApp)

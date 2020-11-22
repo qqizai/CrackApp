@@ -1,5 +1,7 @@
 ## 阿里CTF比赛之AliCrackme逆向分析
 
+先知：图片弱看不了，请点击我去国内的码云查看：[https://gitee.com/qqizai/CrackApp](https://gitee.com/qqizai/CrackApp)
+
 想要了解最新动态，敬请关注[我的博客](https://blog.csdn.net/weixin_41173374)
 
 ### 本文将介绍两种方法：frida hook关键函数、so动态调试
