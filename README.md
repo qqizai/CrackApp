@@ -4,6 +4,7 @@
 
 想要了解最新动态，敬请关注[我的博客](https://blog.csdn.net/weixin_41173374)
 
+update at 2020-11-22 12:00
 
 目前已逆向的APP列表：
 - [x] [【APP逆向-入门级】记一款灰产直播APP逆向过程](https://github.com/qqizai/CrackApp/tree/master/lianrenApp)
