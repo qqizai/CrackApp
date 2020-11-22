@@ -367,6 +367,6 @@ r0ysue肉丝是我目前见过最牛逼的逆向真男人
 
 如果你觉得笔者辛苦了，可以的话请我喝杯咖啡，感谢你的支持
 
-![zanshangma](./statics/zanshangma.png)
+![zanshangma](../statics/zanshangma.png)
 
 你的赞赏就是我的动力
