@@ -1,6 +1,8 @@
 
 先知：图片若看不了，请点击我去国内的码云查看：[https://gitee.com/qqizai/CrackApp](https://gitee.com/qqizai/CrackApp)
 
+本文很长请注意喝水
+
 想要了解最新动态，敬请关注[我的博客](https://blog.csdn.net/weixin_41173374)
 
 更详细的内容，请看原文章来源：
@@ -216,4 +218,11 @@ APK：
 > [META-INF目录是干啥用的？](https://blog.csdn.net/qq_38449518/article/details/82414069?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1)
 
 
+##### 赞赏
+
+如果你觉得笔者辛苦了，可以的话请我喝杯咖啡，感谢你的支持
+
+![zanshangma](./statics/zanshangma.png)
+
+你的赞赏就是我的动力
 

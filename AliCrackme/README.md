@@ -2,6 +2,8 @@
 
 先知：图片若看不了，请点击我去国内的码云查看：[https://gitee.com/qqizai/CrackApp](https://gitee.com/qqizai/CrackApp)
 
+本文针对于新手，大佬的话，建议默默关掉窗口
+
 想要了解最新动态，敬请关注[我的博客](https://blog.csdn.net/weixin_41173374)
 
 ### 本文将介绍两种方法：frida hook关键函数、so动态调试
@@ -138,14 +140,212 @@ if __name__ == "__main__":
 
 
 
-#### 二、so动态调试
+#### 二、IDA动态调试so
+
+**IDA快捷键：**
+- 面板左侧函数列表可以查看每个函数的偏移量（相较于.so文件头的偏移量）
+- F5键（windows fn+F5） ：把汇编代码转成C代码
+- shift+F12 查看so文件中所有常量字符串的值 有的密码之类的可能就在这里面
+- ctrl + s： 查看so文件段信息，双击可直接跳转进去查看代码
+- G：输入跳转的地址，用于分析你需要分析的代码，打上断点，等待跳转进来
+- F8：单步调试，一步一步执行
+- 看到执行汇编代码最后一行的时候，看到哪条线一直在闪烁，那么下一步就是执行那里指向的代码
+- 这中间，可以直接按F5来将汇编代码转换成C语言，同时也可以按F8进行单步调试
+- 然后用鼠标可以看到v6是：aiyou,bucuoo
+- 所以可以猜测，这个就是答案
+- 可以直接拿去测试
+
+
+- [x] 1、对 alicrackme apk 进行分析
+
+分析到：native 加密
+```
+public native boolean securityCheck(String str);
+```
+
+
+- [x] 2、分析 so 文件
+
+- 使用 IDA 打开
+- 在左边里面进行搜索 Ctrl + F，输入：Java
+- 可以看到搜索结果，有 Java 对应的方法 
+
+```
+Java_com_yaotong_crackme_MainActivity_securityCheck
+```
+- 双击这个方法，然后，按 F5 可以将汇编代码转换为 C 语言，这样更加好看代码的逻辑
+- 然后这里部分逻辑，接上这里的操作：[IDA静态调试(静态分析)](http://note.youdao.com/noteshare?id=2556eb567da8a1d1fd549ce1075c37f4&sub=A9158BD8EEDB41F7BF0FC7B286C965E3)
+- 然后使用 IDA 动态调试 so 文件
+
+
+- [x] 首先检查APP是否可以进行调试的
+
+```
+λ adb shell dumpsys package com.yaotong.crackme                                                    Activity Resolver Table:
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        238903e com.yaotong.crackme/.MainActivity
+
+Key Set Manager:
+  [com.yaotong.crackme]
+      Signing KeySets: 48
+
+Packages:
+  Package [com.yaotong.crackme] (bfc7e9f):
+    userId=10154
+    pkg=Package{7108bec com.yaotong.crackme}
+    codePath=/data/app/com.yaotong.crackme-1
+    resourcePath=/data/app/com.yaotong.crackme-1
+    legacyNativeLibraryDir=/data/app/com.yaotong.crackme-1/lib
+    primaryCpuAbi=armeabi
+    secondaryCpuAbi=null
+    versionCode=1 targetSdk=19
+    versionName=1.0
+    splits=[base]
+    applicationInfo=ApplicationInfo{135abb5 com.yaotong.crackme}
+    flags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    pkgFlagsEx=[ ]
+    dataDir=/data/user/0/com.yaotong.crackme
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    timeStamp=2020-11-21 16:33:30
+    firstInstallTime=2020-11-21 16:33:30
+    lastUpdateTime=2020-11-21 16:33:30
+    signatures=PackageSignatures{129724a [eb465bb]}
+    installPermissionsFixed=true installStatus=1
+    pkgFlags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    User 0:  installed=true hidden=false stopped=false notLaunched=false enabled=0
+      runtime permissions:
+    User 999:  installed=false hidden=false stopped=true notLaunched=true enabled=0
+      runtime permissions:
+```
+
+
+- 其中最重要的是：flags 里面是否包含debugger权限字眼： DEBUGGABLE，有则可以进行调试
+```
+flags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+```
+- 如果没有的话，需要去改 APP 信息，然后重新打包
+
+```
+修改APP AndroidMenifest.xml文件， 
+在 application 标签加上可调试权限  android:debuggable="true"
+重新打包APP，签名，安装
+```
+- 以调试模式启动APP APP此时会挂住
+
+```
+adb shell am start -D -n 包名/.类名
+adb shell am start -D -n com.yaotong.crackme/.MainActivity
+```
+
+- 需要先启动 android_server，具体文件是在 IDA 安装路径下的 dbgsrv 目录里面，需要根据你手机/模拟器的系统来将对于版本的 android_server push 到 /data/local/tmp 里面
+
+![05](./statics/alicrackme05.jpg)
+
+- 启动之后，然后去 IDA DebuggerOptions 里勾选 , (下面两个一定要勾选)
+- [x] Suspend on process entry point
+- [x] Suspend on thread start/exit
+- [x] Suspend on library load/unload
+
+IDA 连接不上的话，需要在 window/Linux 敲端口转发的命令：
+```
+adb forward tcp:23946 tcp:23946
+``` 
+
+![06](./statics/alicrackme06.jpg)
+
+
+这样，JNI_OnLoad 函数是 lib 刚加载时就会执行，必须要在 lib 载入时就让程序停下来，才能调试 JNI_OnLoad
+
+- 勾选之后，然后放行APP，点击 IDA 左上角那个绿色的三角运行按钮，放行
+- 在设备里查看APP的进程ID
+
+![07](./statics/alicrackme07.jpg)
+
+```
+要adb shell先进入设备运行,且切换到root用户，如下命令，再过滤出该应用信息
+adb shell
+su
+ps | grep 应用包名
+ps | grep crackme
+```
+- 使用JDB命令让APP 恢复运行
+
+```
+adb forward tcp:8700 jdwp:873（APP的PID）
+jdb -connect com.sun.jdi.SocketAttach:hostname=127.0.0.1,port=8700
+```
+- 在so文件被加载时，IDA会停止住，使用ctrl+s 查看目标so文件是否加载
+- 若加载点选目标so文件，这里我们选择libcrackme.so，双击这个文件
+- 然后计算 JNI_OnLoad 的绝对地址，将刚刚跳转过来的 so 文件开头的地址 + 加上我们需要调试的函数的偏移地址，注意是16进制的
+- 按G键，然后输入相加之后的地址，记得这个地址中间是没有空格的
+- 回车，跳转到 JNI_OnLoad 处
+- 设置断点，恢复APP执行
+- 找到反调试代码处，pthread_create()
+
+
+**如何找到反调试代码处？（关键地方，可按f5，把汇编代码转成C语言辅助）**
+
+- 反复按F8单步执行，程序退出处（前面），即为反调试处
+- 如何让反调试代码不执行？
+- 让该指令变为空指令，既 NOP，NOP指令的16进制是 00 00 00 00
+- 记住反调试处的汇编指令，同时以静态方式再打开一个IDA（也叫双开IDA 以动态和静态方式各打开一个IDA ），
+- 打开so文件，在静态ida里查找到此汇编指令，鼠标选中后面寄存器，然后切换到Hex View，会显示该指令的16进制，
+- 复制该16进制，再用一文本工具打开目标so文件，找到该16进制处，替换成 00 00 00 00 ，即空指令。
+- 即不执行反调试代码。
+- 保存so文件，再重新打包APP，签名，重新安装APP。
+
+
+**重新打包之后，那么就可以不用上面命令行启动APP的方式来调试了，可以直接使用 IDA 的 attach 方式来调试(需要先启动APP)，然后后面分析的步骤是一样的**
+
+
+![08](./statics/alicrackme08.jpg)
+
+![09](./statics/alicrackme09.jpg)
+
+![10](./statics/alicrackme10.jpg)
+
+![11](./statics/alicrackme11.jpg)
+
+![12](./statics/alicrackme12.jpg)
+
+![13](./statics/alicrackme13.jpg)
+
+
+#### 三、frida hook native，直接获取答案
+
+既然我们都找到了答案那个字符串在哪里了，那么可以直接使用 so基址+偏移量，可以读取那个字符串常量的内容，所得就是我们的答案
+
+对应 frida api 是：
+- Module.findBaseAddress(so文件名)：读取so基址/返回模块的基址
+- Memory.readPointer(地址)：从此内存位置读取NativePointer
+- Memory.readUtf8String(pointer)：以UTF-8的形式读取此内存位置的字节
+
+```
+if(Java.available){
+    Java.perform(function(){
+        //法2：直接是获取so基址加上偏移量，直接读取真正的答案,具体请看截图：alicrackme04.jpg
+        var so_addr = Module.findBaseAddress("libcrackme.so");
+        send("real pwd: " + Memory.readUtf8String(Memory.readPointer(so_addr.add(0x628c))));
+    });
+}
+```
+![04](./statics/alicrackme04.jpg)
 
 
 
-#### 三、本文小结
+#### 三、本文小结知识点
+
+- frida hook java 层函数
+- frida hook native 层函数
+- IDA 动态调试 so 文件
+- 如何解决 apk 反调试
+- 如何解决 so 文件反调试
 
 
 ##### 额外建议
+
+- 新手有时间的话，建议直接手动操作一波
 
 附件: AliCrackme.apk
 
@@ -162,3 +362,11 @@ if __name__ == "__main__":
 
 r0ysue肉丝是我目前见过最牛逼的逆向真男人
 
+
+##### 赞赏
+
+如果你觉得笔者辛苦了，可以的话请我喝杯咖啡，感谢你的支持
+
+![zanshangma](./statics/zanshangma.png)
+
+你的赞赏就是我的动力
