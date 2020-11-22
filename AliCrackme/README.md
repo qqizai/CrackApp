@@ -31,10 +31,10 @@
 
 ##### 1.使用 jadx 反编译，发现没有壳，是可以正常反编译的，而且还没有混淆
 
-![01](https://github.com/qqizai/CrackApp/tree/master/AliCrackme/statics/alicrackme01.jpg)
+![01](./statics/alicrackme01.jpg)
 - 首先查看 AndroidManifest.xml，找到启动页加载的方法
 
-![02](https://github.com/qqizai/CrackApp/tree/master/AliCrackme/statics/alicrackme02.jpg)
+![02](./statics/alicrackme02.jpg)
 - 找到对应的源码，分析里面的逻辑
 - 1首先引入眼帘的是：“验证码校验失败” 
 - 2网上稍微看一下下，看到判断逻辑，若为true执行if里面的
@@ -43,7 +43,7 @@
 - 5找到加载 so 文件的地方
 - System.loadLibrary("crackme")  
 
-![03](https://github.com/qqizai/CrackApp/tree/master/AliCrackme/statics/alicrackme03.jpg)
+![03](./statics/alicrackme03.jpg)
 - 6直接去 lib 里面找到 so 文件
 - 等于加载的so文件是： libcrackme.so  这个写法对应文件名关系就是：lib+加载的名字+.so  就是对应的 so 文件名
 
@@ -129,8 +129,8 @@ if __name__ == "__main__":
 ```
 
 结果图：
-![04](https://github.com/qqizai/CrackApp/tree/master/AliCrackme/statics/S01122-120827.jpg)
-![05](https://github.com/qqizai/CrackApp/tree/master/AliCrackme/statics/S01122-120903.jpg)
+![04](./statics/S01122-120827.jpg)
+![05](./statics/S01122-120903.jpg)
 
 
 
