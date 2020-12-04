@@ -13,7 +13,7 @@
 
 正文：
 
-### 很荣幸大家能够找到这里来，这是我的APP逆向的处女作
+### 很荣幸大家能够找到这里来，这是我的APP逆向的首作
 
 [关于更多逆向知识，你可以来这里注册论坛账号，和各大优秀的博友们进行讨论](https://bbs.nightteam.cn/?uid=70)
 
@@ -196,7 +196,6 @@ Tips：鄙人在这里踩了一个坑，这个好像得需要删掉这三个文�
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2020050222182185.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTE3MzM3NA==,size_16,color_FFFFFF,t_70#pic_center)
 
-然后你就可以【猥琐欲为】啦
 
 ##### 0x04、最后重新签名之后，你可以卸载原来的APP，然后装上这个无限制的版本，哈哈哈... 
 
