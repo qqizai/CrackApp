@@ -18,7 +18,7 @@
 [关于更多逆向知识，你可以来这里注册论坛账号，和各大优秀的博友们进行讨论](https://bbs.nightteam.cn/?uid=70)
 
 
-**重点：先声明一下：本文仅仅是用于技术交流，而非传播sexy相关的东西，谢谢。**
+**重点：先声明一下：本文仅仅是用于技术交流，而非传播不当的东西，谢谢。**
 
 这是一篇**入门级的APP逆向教程**，如有写着不对的地方，烦请大佬们指出，互相学习，谢谢啦
 
@@ -29,7 +29,7 @@
 
 原来发现，QQ群友的分享，是为那款APP做引流，一个有效的分享可以获得多少金币(砖石)这种(是指引导别人来注册，才算有效分享，才能获取金币)
 
-打开之后，发现很惊人，这搞的 带颜色 的直播啊！！！
+打开之后，发现很惊人，这直播！！！
 
 而这直播APP里面区分：免费和付费的房间，当你想要看付费的房间，那你只能看前面几十秒钟的时间，过了这个时间就会弹窗出来，让你付费，才能继续看
 
@@ -75,15 +75,13 @@
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200501223109391.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTE3MzM3NA==,size_16,color_FFFFFF,t_70)
 
-看下面的两张截图前，再次向广大博友们声明：本次教程仅仅是用于技术交流，而非传播sexy相关的，谢谢。
+看下面的两张截图前，再次向广大博友们声明：本次教程仅仅是用于技术交流，而非传播不当的东西，谢谢。
 
 下面来看两张收费的room的就截图：一个用户点进去看了几十秒(应该是30s，具体是多少没有数)，然后就弹窗出来说得需要付费才能继续，这不诱惑人进行付费吗？
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200501223119958.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTE3MzM3NA==,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210102141130260.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTE3MzM3NA==,size_16,color_FFFFFF,t_70)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2020050122312760.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTE3MzM3NA==,size_16,color_FFFFFF,t_70)
-
-惹，真的是低俗呀，这都什么人啊？出卖自己body来挣钱？
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210102141123628.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTE3MzM3NA==,size_16,color_FFFFFF,t_70)
 
 
 ##### 0x02、反编译APP
