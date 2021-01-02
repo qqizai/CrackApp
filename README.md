@@ -7,7 +7,7 @@
 update at 2020-11-22 12:00
 
 目前已逆向的APP列表：
-- [x] [【APP逆向-入门级】记一款灰产直播APP逆向过程](https://github.com/qqizai/CrackApp/tree/master/lianrenApp)
+- [x] [【APP逆向-入门级】记一款直播APP逆向过程](https://github.com/qqizai/CrackApp/tree/master/lianrenApp)
 - [x] [阿里CTF比赛APP逆向分析](./AliCrackme/README.md)
 
 
